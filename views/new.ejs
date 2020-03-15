@@ -1,0 +1,17 @@
+<!-- header  -->
+<%- include("./partials/header")%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        New Blog
+    </div>
+    <form action="/blogs" method="POST">
+        <input type="text" name="blog[title]" placeholder="Enter post title">
+        <input type="text" name="blog[image]" placeholder="Enter image URL">
+        <textarea name="blog[body]" id="" cols="30" rows="10" placeholder="Enter post content"></textarea>
+        <input type="submit" value="Creat a new post">
+    </form>
+</div>
+
+<!-- footer  -->
+<%- include("./partials/footer")%>

@@ -44,6 +44,18 @@ app.get('/blogs/new', (req, res) => {
 });
 
 // CREATE ROUTE
+app.post('/blogs', (req, res) => {
+    // create a blog
+    Blog.create(req.body.blog, (error, newBlog) => {
+        if(error) {
+            res.render('new');
+        }
+        else {
+            // redirest to index
+            res.redirect('/blogs');
+        }
+    });
+});
 
 app.listen(3000, () => {
     console.log("Server is runnig on port 3000");

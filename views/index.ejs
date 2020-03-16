@@ -2,11 +2,12 @@
 <%- include("./partials/header")%>
 
 <% blogs.forEach(blog => { %>
-    <div>
+    <div class="container main">
         <h1><%= blog.title%></h1>
         <img src="<%= blog.image%>" alt="">
         <span><%= blog.created%></span>
-        <p><%= blog.body%></p>
+        <p><%= blog.body.substring(0,100) %>...</p>
+        <a href="/blogs/<%= blog._id%>">READ MORE</a>
     </div>
 <% })%>
 

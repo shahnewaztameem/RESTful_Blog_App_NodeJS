@@ -1,5 +1,6 @@
 var express = require('express'),
 bodyParser = require('body-parser'),
+methodOverrid = require('method-override');
 mongoose    = require('mongoose'),
 app         = express();
 
@@ -8,6 +9,7 @@ mongoose.connect("mongodb://localhost/restful_blog_app", {useNewUrlParser: true,
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended:true }));
+app.use(methodOverrid('_method'));
 
 //blog Schema config
 var blogSchema = mongoose.Schema({
@@ -80,6 +82,19 @@ app.get('/blogs/:id/edit', (req, res) => {
         }
     });
 });
+
+// UPDATE route
+app.put('/blogs/:id', (req, res) => {
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (error, updatedBlog) => {
+        if(error) {
+            res.redirect('/blogs');
+        }
+        else {
+            res.redirect('/blogs/'+req.params.id);
+        }
+    });
+});
+
 
 app.listen(3000, () => {
     console.log("Server is runnig on port 3000");

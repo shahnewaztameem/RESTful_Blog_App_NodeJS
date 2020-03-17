@@ -9,3 +9,6 @@ i.icon {
 #deleteForm {
     display: inline;
 }
+.ui.small.image img.img-size {
+    height: 150px !important;
+}

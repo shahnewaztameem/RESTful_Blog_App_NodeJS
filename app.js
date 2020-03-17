@@ -115,6 +115,11 @@ app.delete('/blogs/:id', (req, res) => {
     // redirect to all blog posts 
 });
 
+// 404 page added
+app.get('*', (req, res) => {
+    res.render('404');
+});
+
 app.listen(3000, () => {
     console.log("Server is runnig on port 3000");
 })

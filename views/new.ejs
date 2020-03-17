@@ -8,15 +8,15 @@
     <form action="/blogs" method="POST" class="ui form">
         <div class="field">
             <label for="title">Post Title</label>
-            <input type="text" name="blog[title]" placeholder="Enter post title">
+            <input type="text" name="blog[title]" placeholder="Enter post title" required>
         </div>
         <div class="field">
             <label for="image">Image URL</label>
-            <input type="text" name="blog[image]" placeholder="Enter image URL">
+            <input type="text" name="blog[image]" placeholder="Enter image URL" required>
         </div>
         <div class="field">
             <label for="body">Post Content</label>
-            <textarea name="blog[body]" cols="30" rows="10" placeholder="Enter post content"></textarea>
+            <textarea name="blog[body]" cols="30" rows="10" placeholder="Enter post content" required></textarea>
         </div>
         
         

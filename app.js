@@ -1,15 +1,15 @@
-var express = require('express'),
-bodyParser = require('body-parser'),
-methodOverrid = require('method-override');
-mongoose    = require('mongoose'),
-app         = express();
+var express     = require('express'),
+bodyParser      = require('body-parser'),
+methodOverride  = require('method-override');
+mongoose        = require('mongoose'),
+app             = express();
 
 //db connection config
 mongoose.connect("mongodb://localhost/restful_blog_app", {useNewUrlParser: true, useUnifiedTopology: true });
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended:true }));
-app.use(methodOverrid('_method'));
+app.use(methodOverride('_method'));
 
 //blog Schema config
 var blogSchema = mongoose.Schema({

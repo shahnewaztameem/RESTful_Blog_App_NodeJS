@@ -7,21 +7,24 @@
     </div>
     <div class="ui top attached">
         <div class="item">
-        <img class="ui centered rounded image"src="<%= post.image%>" alt="">
-        <div class="content">
-            <span><%= post.created.toDateString()%></span>
+            <img class="ui centered rounded image" src="<%= post.image%>" alt="">
+            <div class="content">
+                <span><%= post.created.toDateString()%></span>
+                <hr>
+
+            </div>
+            <div class="description">
+                <p><%= post.body%></p>
+            </div>
             <hr>
-            
-        </div>
-        <div class="description">
-            <p><%= post.body%></p>
-        </div>
-        
-        
+            <div class="ui inverted segment">
+                <a href="/blogs/<%= post._id%>/edit" class="ui inverted purple button">Edit Post</a>
+                <form action="/blogs/<%= post._id %>?_method=DELETE" method="POST" id="deleteForm">
+                    <button class="ui inverted red button">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
-    
-    
 </div>
 
 <!-- footer  -->

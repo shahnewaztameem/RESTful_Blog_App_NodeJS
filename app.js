@@ -6,6 +6,7 @@ app             = express();
 
 //db connection config
 mongoose.connect("mongodb://localhost/restful_blog_app", {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useFindAndModify', false);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended:true }));
@@ -95,6 +96,19 @@ app.put('/blogs/:id', (req, res) => {
     });
 });
 
+// DELETE route
+app.delete('/blogs/:id', (req, res) => {
+    // delete blog
+    Blog.findByIdAndRemove(req.params.id, (error) => {
+        if(error) {
+            res.redirect('/blogs/'+req.params.id);
+        }
+        else {
+            res.redirect('/blogs');
+        }
+    });
+    // redirect to all blog posts 
+});
 
 app.listen(3000, () => {
     console.log("Server is runnig on port 3000");

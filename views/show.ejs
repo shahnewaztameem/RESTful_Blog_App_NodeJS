@@ -19,8 +19,23 @@
             <hr>
             <div class="ui inverted segment">
                 <a href="/blogs/<%= post._id%>/edit" class="ui inverted purple button">Edit Post</a>
-                <form action="/blogs/<%= post._id %>?_method=DELETE" method="POST" id="deleteForm">
-                    <button class="ui inverted red button">Delete</button>
+                <button class="ui inverted red button delete">Delete</button>
+                
+                <div class="ui tiny modal">
+                    <div class="header">Delete Confirmation!</div>
+                    <div class="content">
+                      <p>Are you sure you want to delete <strong><%= post.title.substring(0,20)%></strong> ?</p>
+                    </div>
+                    <div class="actions">
+                      <div class="ui positive button">
+                          Cancel
+                      </div>
+                      <form action="/blogs/<%= post._id %>?_method=DELETE" method="POST" id="deleteForm">
+                        <button class="ui negative right icon button">Delete</button>
+                    </form>
+                    </div>
+                  </div>
+                    
                 </form>
             </div>
         </div>
